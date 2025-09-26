@@ -1,20 +1,7 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import LoginPage from './pages/LoginPage';
-import DashboardPage from './pages/DashboardPage';
-import ProfileFormPage from './pages/ProfileFormPage';
-import CompletePage from './pages/CompletePage';
+import Router from './Router';
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/dashboard" element={<DashboardPage />} />
-        <Route path="/profile" element={<ProfileFormPage />} />
-        <Route path="/complete" element={<CompletePage />} />
-      </Routes>
-    </BrowserRouter>
-  );
+  return <Router />;
 }
 
 export default App;
