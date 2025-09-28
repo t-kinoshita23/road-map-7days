@@ -11,6 +11,10 @@ type Profile = {
   avatar_url: string;
 };
 
+const ProfileViews = () => {
+  const navigate = useNavigate();
+};
+
 export default function ProfilePage() {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [message, setMessage] = useState('');
@@ -30,6 +34,7 @@ export default function ProfilePage() {
         setMessage('ログイン情報の取得に失敗しました');
         return;
       }
+      console.log('現在のユーザーID:', user.id);
 
       // Supabaseの戻り値に型を明示的に指定
       const { data, error } = await supabase
@@ -37,6 +42,8 @@ export default function ProfilePage() {
         .select('*')
         .eq('id', user.id)
         .single<Profile>();
+      console.log('ここのユーザーID:', user.id);
+      console.log('取得したプロフィール情報:', data);
 
       if (error || !data) {
         setMessage('プロフィール情報が見つかりません');
@@ -106,8 +113,9 @@ export default function ProfilePage() {
   };
 
   return (
-    <div style={{ padding: '2rem' }}>
+    <div style={{ padding: '2rem', textAlign: 'center' }}>
       <h2>プロフィール情報</h2>
+      <p>④ProfileViews.tsxはプロフィール情報を表示するページです。</p>
 
       {message && <p style={{ color: 'red' }}>{message}</p>}
 
@@ -157,16 +165,7 @@ export default function ProfilePage() {
           </div>
 
           {/* 編集ボタン */}
-          <button
-            onClick={() => {
-              if (isEditing) {
-                handleUpdate();
-              }
-              setIsEditing(!isEditing);
-            }}
-          >
-            {isEditing ? '保存' : '編集'}
-          </button>
+          <button onClick={() => navigate('/profile/editor')}>編集</button>
 
           {/* CompletePageへの戻るボタン */}
           <button onClick={() => navigate('/complete')}>ホームへ戻る</button>

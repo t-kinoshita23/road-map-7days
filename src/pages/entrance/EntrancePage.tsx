@@ -65,6 +65,9 @@ export default function EntrancePage() {
   return (
     <div style={{ padding: '2rem', textAlign: 'center' }}>
       <h1 className="text-2xl font-bold mb-4">アプリをはじめます</h1>
+      <p className="text-sm text-gray-600 mb-4">
+        1. EntrancePage.tsx は最初の入口。ログインボタンと新規登録ボタンがある。
+      </p>
 
       <input
         type="text"
@@ -115,7 +118,7 @@ export default function EntrancePage() {
         onClick={handleRegister}
         className="bg-blue-500 text-white px-4 py-2 rounded w-full hober:bg-blue-600 mb-4"
       >
-        新規登録
+        アカウント新規
       </button>
 
       {showModal && (

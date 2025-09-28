@@ -23,4 +23,9 @@ dist-ssr
 *.sln
 *.sw?
 
+LoginPage copy.tsx
+ProfileFormPage.tsx
+ProfileFormPage copy.tsx
+ProfileFormPage copy 2.tsx
+
 node_modules
