@@ -1,10 +1,11 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import ProfileFormPage from './pages/register/ProfileFormPage';
-import ProfileViews from './pages/users/profileviews/ProfileViews.tsx';
-import CompletePage from './pages/complete/CompletePage';
-import EntrancePage from './pages/entrance/EntrancePage';
-import LoginPage from './pages/new_login/LoginPage';
-import ProfileEditPage from './pages/users/editor/ProfileEditPage';
+import ProfileFormPage from '@/pages/register/ProfileFormPage';
+import ProfileViews from '@/pages/users/profileviews/ProfileViews.tsx';
+import CompletePage from '@/pages/complete/CompletePage';
+import EntrancePage from '@/pages/entrance/EntrancePage';
+import LoginPage from '@/pages/new_login/LoginPage';
+import ProfileEditPage from '@/pages/users/editor/ProfileEditPage';
+import UserManagementPage from '@/pages/admin/UserManagementPage';
 
 // EntrancePage.tsx は最初の入口。ログインボタンと新規登録ボタンがある。
 // ProfileFormPage.tsx はプロフィール登録・主にログイン時に追加していない項目を追加するページ
@@ -21,6 +22,7 @@ export default function Router() {
         <Route path="/register" element={<ProfileFormPage />} />
         <Route path="/new_login" element={<LoginPage />} />
         <Route path="/profile/editor" element={<ProfileEditPage />} />
+        <Route path="/admin/users" element={<UserManagementPage />} />
       </Routes>
     </BrowserRouter>
   );

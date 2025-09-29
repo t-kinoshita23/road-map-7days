@@ -7,12 +7,15 @@ import { useNavigate } from 'react-router-dom';
 type Profile = {
   id: string;
   name: string;
+  age: number | null;
   gender_code: string;
   avatar_url: string;
+  role: string;
 };
 
-const ProfileViews = () => {
+const ProfileViews = ({ profile }: { profile: Profile | null }) => {
   const navigate = useNavigate();
+  const isAdmin = profile?.role === 'admin';
 };
 
 export default function ProfilePage() {
@@ -115,6 +118,7 @@ export default function ProfilePage() {
   return (
     <div style={{ padding: '2rem', textAlign: 'center' }}>
       <h2>プロフィール情報</h2>
+      <h3>名前: {profile?.name}さん</h3>
       <p>④ProfileViews.tsxはプロフィール情報を表示するページです。</p>
 
       {message && <p style={{ color: 'red' }}>{message}</p>}
@@ -169,6 +173,12 @@ export default function ProfilePage() {
 
           {/* CompletePageへの戻るボタン */}
           <button onClick={() => navigate('/complete')}>ホームへ戻る</button>
+          <p>あなたのステータス：{profile?.role}</p>
+          {profile?.role === 'admin' && (
+            <button onClick={() => navigate('/admin/users')}>
+              管理ページへ
+            </button>
+          )}
         </div>
       )}
     </div>

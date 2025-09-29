@@ -36,15 +36,15 @@ export default defineConfig([
       // other options...
     },
   },
-])
+]);
 ```
 
 You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
 ```js
 // eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+import reactX from 'eslint-plugin-react-x';
+import reactDom from 'eslint-plugin-react-dom';
 
 export default defineConfig([
   globalIgnores(['dist']),
@@ -65,5 +65,35 @@ export default defineConfig([
       // other options...
     },
   },
-])
+]);
 ```
+
+src/
+├── features/ # 機能単位（jobs と同じ発想）
+│ ├── registration/
+│ ├── userManagement/
+│ ├── notifications/
+│ └── adminPanel/
+├── components/ # UI 部品（汎用コンポーネント）
+├── hooks/ # カスタム Hook 群
+├── lib/ # 汎用関数・ユーティリティ
+├── pages/ # ルーティング対象のページ
+├── types/ # 型定義（TypeScript）
+├── assets/ # 画像・音声・フォントなど
+└── styles/ # CSS や Tailwind 設定
+
+src/
+└── jobs/
+├── registration/ # ユーザー登録・プロフィール管理
+│ ├── RegistrationForm.tsx
+│ ├── ProfileEditPage.tsx
+│ ├── useProfile.ts
+│ └── types.ts
+├── admin/ # 管理者によるユーザー操作
+├── notifications/ # 通知設定・送信処理
+└── mediaUpload/ # 画像アップロード・Storage 連携
+
+# jobs/registration
+
+この jobs/registration/は、ユーザーの登録・プロフィール編集・閲覧を担う機能群です。
+Supabase の`auth`と`profiles`テーブルを使用しています。
